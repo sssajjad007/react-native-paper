@@ -10,6 +10,7 @@ import {
   TouchableWithoutFeedbackProps,
   View,
   ViewStyle,
+  TouchableOpacity,
 } from 'react-native';
 
 import color from 'color';
@@ -224,16 +225,17 @@ const Touchable = <Route extends BaseRoute>({
   ...rest
 }: TouchableProps<Route>) =>
   TouchableRipple.supported ? (
-    <TouchableRipple
+    <TouchableOpacity
+      activeOpacity={1}
       {...rest}
       disabled={rest.disabled || undefined}
-      borderless={borderless}
-      centered={centered}
-      rippleColor={rippleColor}
+      // borderless={borderless}
+      // centered={centered}
+      // rippleColor={rippleColor}
       style={style}
     >
       {children}
-    </TouchableRipple>
+    </TouchableOpacity>
   ) : (
     <TouchableWithoutFeedback {...rest}>
       <View style={style}>{children}</View>
